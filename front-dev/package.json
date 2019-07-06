@@ -1,0 +1,30 @@
+{
+  "name": "interface",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --host 0.0.0.0 --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production && mv js/app.js ../server/public/js/app.js && \t\necho \"Arquivo pronto salvo em \\e[36mserver/public/js/app.js\" && rm ../server/views/index.ejs && cp index.html ../server/views/index.ejs",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.20",
+    "cross-env": "^5.2.0",
+    "laravel-mix": "^4.0.15",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "vue": "^2.6.10",
+    "vue-material-design-icons": "^3.3.1",
+    "vue-moment": "^4.0.0",
+    "vue-router": "^3.0.3",
+    "vuetify": "^1.5.16"
+  },
+  "devDependencies": {
+    "vue-template-compiler": "^2.6.10"
+  }
+}
