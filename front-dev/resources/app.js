@@ -2,10 +2,16 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router'
 import Vuetify from 'vuetify'
+const moment = require('moment');
 import VueMoment from 'vue-moment'
-const moment = require('moment')
+import VueSocketIO from 'vue-socket.io'
 
 Vue.config.productionTip = false;
+
+
+Vue.use(new VueSocketIO({
+    connection: 'http://192.168.0.103:3000',
+}))
 
 Vue.use(VueRouter);
 Vue.use(Vuetify)
@@ -20,6 +26,7 @@ Vue.use(VueMoment, {
  */
 
 window.axios = require('axios');
+Vue.prototype.$config = require('./config').default;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
