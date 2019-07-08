@@ -28,7 +28,7 @@ router.get('/auto/', function(req, res) {
 
 router.post('/auto/', async function(req, res) {
     automatic = req.body.status;
-    if (automatic) target = parseInt((await adafruit.getLastFeed('ldr')).value);
+    if (automatic) target = parseInt((await adafruit.getLastFeed('sensor')).value);
     res.json({status: automatic});
 });
 
@@ -57,7 +57,7 @@ setInterval(async () => {
     if (automatic) {
         let switchOn = parseInt((await adafruit.getLastFeed('switch')).value) === 1;
         if (switchOn) {
-            let luminosity = await adafruit.getLastFeed('ldr');
+            let luminosity = await adafruit.getLastFeed('sensor');
             let dimmer = await adafruit.getLastFeed('dimmer');
 
             let dimmerNextValue = await helper.newDimmerValue(parseInt(luminosity.value), parseInt(dimmer.value));
